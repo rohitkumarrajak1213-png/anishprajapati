@@ -1,114 +1,287 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome - Anish Prajapati</title>
+    <title>Anish Prajapati Mitti ke Bartan</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fdfcf0, #e6dabe);
+            color: #5a4a3a;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fffaf0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            color: #a0522d;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        header h2 {
+            color: #8b4513;
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+        
+        .student-info {
+            background: #fff5e6;
+            border-left: 5px solid #cd853f;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
             text-align: center;
         }
         
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            max-width: 550px;
-            width: 90%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        h1 {
-            margin-bottom: 15px;
-            font-size: 2.5rem;
-            color: #00d2ff;
-        }
-        
-        h2 {
-            color: #f1f2f6;
-            margin-bottom: 25px;
-            font-size: 1.6rem;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 10px;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            text-align: left;
-            margin-bottom: 25px;
-        }
-        
-        .info-item {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 12px 15px;
-            border-radius: 8px;
-        }
-        
-        .info-item span {
-            display: block;
-            font-size: 0.9rem;
-            color: #a4b0be;
-            margin-bottom: 4px;
-        }
-        
-        .info-item strong {
+        .student-info p {
             font-size: 1.1rem;
-            color: #ffffff;
+            margin: 5px 0;
+            color: #5f4b32;
         }
         
-        .bio {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #dfe4ea;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 8px;
+        .section-title {
+            text-align: center;
+            color: #8b4513;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #cd853f;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-img-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: #f7f1eb;
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        
+        .product-details {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .product-details h3 {
+            color: #5a4a3a;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-details p {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            color: #2e8b57;
+            font-weight: bold;
+        }
+        
+        .order-btn {
+            background: #cd853f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .order-btn:hover {
+            background: #a0522d;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #5a4a3a;
+            color: #fdfcf0;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            header h2 {
+                font-size: 1.2rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="card">
-        <h1>Welcome to My Website</h1>
-        <h2>Anish Prajapati</h2>
+    <div class="container">
+        <header>
+            <h1>Aneesh Prajapati Mitti ke Bartan</h1>
+            <h2>Traditional Handcrafted Terracotta Art</h2>
+        </header>
 
-        <div class="info-grid">
-            <div class="info-item">
-                <span>College</span>
-                <strong>GOVT PG Satna</strong>
+        <div class="student-info">
+            <p><strong>Artisan:</strong> Aneesh Prajapati</p>
+            <p><strong>College:</strong> GOVT PG College Satna</p>
+            <p><strong>Specialization:</strong> Mitti ke Bartan aur Matka Udyog</p>
+        </div>
+
+        <h3 class="section-title">Hamare Lokpriya Utpaad</h3>
+
+        <div class="products-grid">
+            <!-- Product 1: Matka/Ghda -->
+            <div class="product-card">
+                <div class="product-img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShUC9kcoZa7ZHXZQcAoOM5YDIzCkqt6onJzCMkyYpxFg&s=10" alt="Traditional Mitti ka Ghada" class="product-img">
+                </div>
+                <div class="product-details">
+                    <h3>Traditional Mitti ka Ghada</h3>
+                    <p>Naturally cool water pot. Perfect for healthy drinking water during summers.</p>
+                    <div class="price-row">
+                        <span class="price">₹299</span>
+                    </div>
+                    <a href="https://wa.me/918602894192?text=Hello%20Aneesh,%20I%20want%20to%20order%20the%20Traditional%20Mitti%20ka%20Ghada." class="order-btn" target="_blank">Order on WhatsApp</a>
+                </div>
             </div>
-            <div class="info-item">
-                <span>Course</span>
-                <strong>Bachelor of Arts (BA)</strong>
+
+            <!-- Product 2: Water Jug -->
+            <div class="product-card">
+                <div class="product-img-container">
+                    <img src="data:image/jpeg;base64,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"
+                        alt="Designer Mitti ka Jug" class="product-img">
+                </div>
+                <div class="product-details">
+                    <h3>Designer Mitti ka Jug</h3>
+                    <p>Elegant terracotta water jug with a lid and handle. A beautiful addition to your dining table.</p>
+                    <div class="price-row">
+                        <span class="price">₹499</span>
+                    </div>
+                    <a href="https://wa.me/918602894192?text=Hello%20Aneesh,%20I%20want%20to%20order%20the%20Designer%20Mitti%20ka%20Jug." class="order-btn" target="_blank">Order on WhatsApp</a>
+                </div>
             </div>
-            <div class="info-item">
-                <span>Location</span>
-                <strong>Satna, Madhya Pradesh</strong>
-            </div>
-            <div class="info-item">
-                <span>Status</span>
-                <strong>Student & Explorer</strong>
+
+            <!-- Product 3: Diya Set -->
+            <div class="product-card">
+                <div class="product-img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbid0KcucQMDDM0c17aLuiLaJjBOgrV6-mZ8y8rLUpRY7V_G73SaUnZZo&s=10" alt="Decorative Mitti ke Diye" class="product-img">
+                </div>
+                <div class="product-details">
+                    <h3>Decorative Mitti ke Diye (Set of 12)</h3>
+                    <p>Hand-painted traditional diyas for Diwali and auspicious occasions. Set of 12 assorted designs.</p>
+                    <div class="price-row">
+                        <span class="price">₹199</span>
+                    </div>
+                    <a href="https://wa.me/918602894192?text=Hello%20Aneesh,%20I%20want%20to%20order%20the%20Set%20of%2012%20Decorative%20Mitti%20ke%20Diye." class="order-btn" target="_blank">Order on WhatsApp</a>
+                </div>
             </div>
         </div>
 
-        <div class="bio">
-            <p>Hello everyone! I am Anish Prajapati, currently pursuing my higher education from Govt. PG College Satna. Welcome to my personal web space where I share my journey, learning, and projects.</p>
+        <h3 class="section-title">Kala aur Karigari</h3>
+        <!-- Additional Image of Making Process -->
+        <div style="text-align: center; margin-bottom: 50px; background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.1);">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW1KzMAPvamZX7fMr7qjypbvF_UlvhmiH4rR8Jj_GK2A&s=10" alt="Potter wheel making" style="max-width: 100%; height: 350px; object-fit: cover; border-radius: 10px;">
+            <p style="margin-top: 15px; font-style: italic; color: #8b4513; font-size: 1.1rem;">Pure handcrafted clay items made with tradition and care from Satna.</p>
         </div>
+
     </div>
+
+    <footer>
+        <p>&copy; 2026 Aneesh Prajapati | Govt. PG College Satna</p>
+        <p>Authentic Clay Products & Terracotta Art</p>
+    </footer>
 
 </body>
 
